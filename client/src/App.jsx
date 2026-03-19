@@ -1,45 +1,47 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import Home from './pages/Home';
+import Chat from './pages/Chat';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <Routes>
-      <Route path='/login' element={<Login/>} />
-      <Route path='/register' element={<Register/>} />
-      <Route path='/forgot-password' element={<ForgetPassword/>} />
-      <Route path='/reset-password' element={<ResetPassword/>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route
-        path='/'
+        path="/"
         element={
           <ProtectedRoute>
-            <Home/>
+            <Home />
           </ProtectedRoute>
         }
       />
       <Route
-        path='/chat'
+        path="/chat"
         element={
           <ProtectedRoute>
-            <Chat/>
+            <Chat />
           </ProtectedRoute>
         }
       />
       <Route
-        path='/profile'
+        path="/profile"
         element={
           <ProtectedRoute>
-            <Profile/>
+            <Profile />
           </ProtectedRoute>
         }
       />
-      <Route 
-        path='*'
-        element={
-          <Navigate to="/" replace/>
-        }
-      />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
